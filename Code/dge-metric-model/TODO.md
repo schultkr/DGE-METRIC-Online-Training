@@ -18,6 +18,7 @@ These live at the DGE-METRIC repo root (outside `ModFiles/`/`Functions/`) and ar
   'C:\dynare\7.0\matlab', ...
   'C:\dynare\6.1\matlab'
   ```
+
   This is a **machine dependency**, not a repo dependency — every participant machine needs Dynare installed at one of these paths (or `setup_paths.m` needs a portable rewrite, e.g. reading a `DYNARE_PATH` environment variable) before this runs on any machine but the current one.
 
 ## ToDo: sibling folders referenced by `Functions/` but not yet transferred
@@ -38,18 +39,21 @@ Also referenced only in comments/docstrings (informational, not a runtime blocke
 These are the two findings from the scan that point **outside any git repository entirely** — real "ToDo, fix before this is portable" items, not just missing-folder items:
 
 1. **`RunSimulations.m` lines 152, 163** — default fallback paths read from environment variables, but if unset, fall back to a hardcoded Dropbox path:
+
    ```matlab
    sInvestmentTargetsCsv = fullfile(getenv('USERPROFILE'), 'Dropbox', '2025_GIZ_Vietnam', ...);
    sInvestmentTargetsIoTableXlsx = fullfile(getenv('USERPROFILE'), 'Dropbox', '2025_GIZ_Vietnam', ...);
    ```
-   `[SME REVIEW NEEDED: confirm the exact investment-targets CSV and IO-table xlsx filenames/subpath, and whether these should ship inside the model repo instead of defaulting to a Dropbox path that only exists on the original author's machine]`
 
+   `[SME REVIEW NEEDED: confirm the exact investment-targets CSV and IO-table xlsx filenames/subpath, and whether these should ship inside the model repo instead of defaulting to a Dropbox path that only exists on the original author's machine]`
 2. **`Figures/save_figures_for_scenarios*.m`** (all three files) hardcode absolute output paths to a *different user's* machine:
+
    ```matlab
    outdir = 'C:/Users/schul/Documents/GitHub/DGE-METRIC-VietNam/docs/figures/RTS/';    % save_figures_for_scenarios.m
    outdir = 'C:/Users/schul/Documents/GitHub/DGE-METRIC-VietNam/docs/figures/finance/'; % save_figures_for_scenarios_finance.m
    outdir = 'C:/Users/schul/Documents/GitHub/DGE-METRIC-VietNam/docs/figures/EE/';      % save_figures_for_scenarios_ee.m
    ```
+
    Username is `schul`, not the current machine's `nb` — these will fail outright on this machine, and point at a **separate `DGE-METRIC-VietNam` repository** that these `Figures/` scripts assume exists as a sibling checkout. `[SME REVIEW NEEDED: confirm whether DGE-METRIC-VietNam is still the canonical docs/figures destination, or whether this repo (DGE-METRIC) is now self-contained and these scripts are stale]`. `Figures/` itself has not been transferred here yet either.
 
 ## Open question: does the training's scenario design match what this model actually implements?

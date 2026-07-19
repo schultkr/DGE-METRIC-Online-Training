@@ -1,0 +1,34 @@
+ToyModelSOEMC training export manifest
+Timestamp: 2026-07-19 19:07:06
+Run successful: 1
+
+01 | Supply Crisis Demo
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\01_Supply_Crisis_Demo.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\01_Supply_Crisis_Demo.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\01_Supply_Crisis_Demo.fig
+
+02 | Vietnam: Reserve Adequacy Under Growth
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\02_Vietnam_Reserve_Adequacy_Under_Growth.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\02_Vietnam_Reserve_Adequacy_Under_Growth.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\02_Vietnam_Reserve_Adequacy_Under_Growth.fig
+
+03 | Energy Master Plan VIII — Coal Transition
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\03_Energy_Master_Plan_VIII_Coal_Transition.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\03_Energy_Master_Plan_VIII_Coal_Transition.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\03_Energy_Master_Plan_VIII_Coal_Transition.fig
+
+04 | Joint Optimal: Policy Heatmap at d*
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\04_Joint_Optimal_Policy_Heatmap_at_d.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\04_Joint_Optimal_Policy_Heatmap_at_d.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\04_Joint_Optimal_Policy_Heatmap_at_d.fig
+
+05 | Joint Optimal: Welfare vs Reserve Level
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\05_Joint_Optimal_Welfare_vs_Reserve_Level.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\05_Joint_Optimal_Welfare_vs_Reserve_Level.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\05_Joint_Optimal_Welfare_vs_Reserve_Level.fig
+
+06 | Joint Optimal: Stock-Drawdown Interaction
+    PNG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\06_Joint_Optimal_Stock-Drawdown_Interaction.png
+    PDF: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\06_Joint_Optimal_Stock-Drawdown_Interaction.pdf
+    FIG: C:\Users\schul\Dropbox\2025_GIZ_Vietnam\Training\Toy Model SOE MC\Training_2x2x2_share\run_outputs\20260719_190353\06_Joint_Optimal_Stock-Drawdown_Interaction.fig
+
