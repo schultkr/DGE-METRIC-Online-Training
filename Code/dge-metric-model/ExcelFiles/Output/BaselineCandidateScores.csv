@@ -1,2 +1,0 @@
-Sheet,Sensitivity,Scenario,OutputCsv,Solved,GrowthFeasible,MaxAbsMuI,MaxAbsCapitalLomGap,MaxAbsInvGdpTargetDiff,MaxAbsPriceWeightedGrowthDiff,MaxAbsAggregateGrowthDiff,MaxAbsGrowthDiff,RunError,GrowthAuditError
-Baseline,,Baseline,ExcelFiles\Output\Baseline.csv,1,1,0.0570989918682804,0.0554994331370997,4.30211422042248e-16,3.48567485985996e-09,6.41198205642013e-12,3.48567485985996e-09,,
