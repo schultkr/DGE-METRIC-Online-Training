@@ -15,6 +15,7 @@ It is structured for hands-on delivery: participants can move from agenda to cod
 ## Target Audience
 
 Participants who have completed the on-site DGE-METRIC training and are ready for applied work in:
+
 - calibration and diagnostics,
 - scenario design and implementation,
 - reserve-requirement analysis, and
@@ -23,6 +24,7 @@ Participants who have completed the on-site DGE-METRIC training and are ready fo
 ## Learning Outcomes
 
 By the end of the online training, participants should be able to:
+
 - Navigate the DGE-METRIC codebase and trace equations to implementation.
 - Run baseline calibration workflows and interpret diagnostics.
 - Build and document finance and energy-efficiency scenarios.
@@ -32,22 +34,24 @@ By the end of the online training, participants should be able to:
 
 ## Session Schedule
 
-| Session | Date | Time (ICT) | Topic | Main Output |
-|---|---|---|---|---|
-| 1 | Wed 22 Jul 2026 | 13:00-17:00 | Finance and energy-efficiency scenario definition | Two completed scenario metadata sheets |
-| 2 | Thu 23 Jul 2026 | 09:00-11:30 | Calibration and scenario hands-on | Calibration diagnostic note + comparison chart and narrative |
-| 3 | Thu 23 Jul 2026 | 13:00-17:00 | Reserve requirements method and implementation planning | MC=MB walkthrough + implementation plan |
-| 4 | Fri 24 Jul 2026 | 09:00-11:30 | Guided open lab on reserve requirements | Completed reserve-requirement analysis note |
-| 5 | Fri 24 Jul 2026 | 13:00-17:00 | Calibration internals, modification, sensitivity, and close | Sensitivity-analysis plan + exit outputs |
+| Session | Date            | Time (ICT)  | Topic                                                       | Main Output                                                  |
+| ------- | --------------- | ----------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| 1       | Wed 22 Jul 2026 | 13:00-17:00 | Finance and energy-efficiency scenario definition           | Two completed scenario metadata sheets                       |
+| 2       | Thu 23 Jul 2026 | 09:00-11:30 | Calibration and scenario hands-on                           | Calibration diagnostic note + comparison chart and narrative |
+| 3       | Thu 23 Jul 2026 | 13:00-17:00 | Reserve requirements method and implementation planning     | MC=MB walkthrough + implementation plan                      |
+| 4       | Fri 24 Jul 2026 | 09:00-11:30 | Guided open lab on reserve requirements                     | Completed reserve-requirement analysis note                  |
+| 5       | Fri 24 Jul 2026 | 13:00-17:00 | Calibration internals, modification, sensitivity, and close | Sensitivity-analysis plan + exit outputs                     |
 
 ## Day-to-Code Mapping
 
 ### Day 1 - Wednesday, 22 July 2026
 
 Primary focus:
+
 - Finance and energy-efficiency scenario definition (Session 1).
 
 Relevant repository locations:
+
 - Main model workflows: [Code/dge-metric-model](Code/dge-metric-model)
 - Equations and calibration scripts: [Code/dge-metric-model/ModFiles](Code/dge-metric-model/ModFiles), [Code/dge-metric-model/Functions](Code/dge-metric-model/Functions)
 - Agenda reference: [Agenda/detailed-agenda.md](Agenda/detailed-agenda.md)
@@ -55,10 +59,12 @@ Relevant repository locations:
 ### Day 2 - Thursday, 23 July 2026
 
 Primary focus:
+
 - Morning: calibration and scenario hands-on (Session 2).
 - Afternoon: reserve requirements method and implementation planning (Session 3).
 
 Relevant repository locations:
+
 - Calibration and scenario execution: [Code/dge-metric-model](Code/dge-metric-model)
 - Reserve requirements methods and scripts: [Code/reserve-requirements](Code/reserve-requirements)
 - Reserve outputs and examples: [Code/reserve-requirements/run_outputs](Code/reserve-requirements/run_outputs)
@@ -66,10 +72,12 @@ Relevant repository locations:
 ### Day 3 - Friday, 24 July 2026
 
 Primary focus:
+
 - Morning: guided open lab on reserve requirements (Session 4).
 - Afternoon: calibration internals, model modification, and sensitivity analysis (Session 5).
 
 Relevant repository locations:
+
 - Reserve-requirement lab work: [Code/reserve-requirements](Code/reserve-requirements)
 - Model modification and sensitivity practice: [Code/dge-metric-model](Code/dge-metric-model)
 - Communication outputs and presentation assets: [slides](slides), [Code/reserve-requirements/Presentation](Code/reserve-requirements/Presentation)
@@ -122,6 +130,7 @@ Relevant repository locations:
 
 - [Agenda](Agenda)
 - [slides](slides)
+- [worksheets](worksheets)
 - [Code](Code)
 - [Code/dge-metric-model](Code/dge-metric-model)
 - [Code/reserve-requirements](Code/reserve-requirements)
@@ -135,9 +144,7 @@ Relevant repository locations:
 
 ## Source and Notes
 
-Agenda source used for this README:
-- C:/Users/schul/Downloads/DGE-METRIC_Online_Training_Agenda_170726.docx
-
 Additional notes:
+
 - Reserve-requirement method examples are instructional and not policy-final outputs.
 - Some institutional follow-up items (for example TA/manual/video support and Octave substitution) remain to be confirmed.
