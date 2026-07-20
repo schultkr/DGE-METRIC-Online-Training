@@ -4,6 +4,16 @@ This repository contains materials for the DGE-METRIC Online Training on finance
 
 It is structured for hands-on delivery: participants can move from agenda to code, reproduce core exercises, and document outputs in a consistent workflow.
 
+## Setup Guide
+
+For participant onboarding, use the GitHub-viewable setup guide:
+
+- [worksheets/setup/GitHub_Copilot_Setup_Guide.md](worksheets/setup/GitHub_Copilot_Setup_Guide.md)
+
+Source document (kept in-repo):
+
+- [worksheets/setup/GitHub_Copilot_Setup_Guide.docx](worksheets/setup/GitHub_Copilot_Setup_Guide.docx)
+
 ## Training Summary
 
 - Program: GIZ Vietnam | DGE-METRIC Program | Online Module
@@ -54,7 +64,6 @@ Relevant repository locations:
 
 - Main model workflows: [Code/dge-metric-model](Code/dge-metric-model)
 - Equations and calibration scripts: [Code/dge-metric-model/ModFiles](Code/dge-metric-model/ModFiles), [Code/dge-metric-model/Functions](Code/dge-metric-model/Functions)
-- Agenda reference: [Agenda/detailed-agenda.md](Agenda/detailed-agenda.md)
 
 ### Day 2 - Thursday, 23 July 2026
 
@@ -135,16 +144,6 @@ Relevant repository locations:
 - [Code](Code)
 - [Code/dge-metric-model](Code/dge-metric-model)
 - [Code/reserve-requirements](Code/reserve-requirements)
-
-## Setup Guide
-
-For participant onboarding, use the GitHub-viewable setup guide:
-
-- [worksheets/setup/GitHub_Copilot_Setup_Guide.md](worksheets/setup/GitHub_Copilot_Setup_Guide.md)
-
-Source document (kept in-repo):
-
-- [worksheets/setup/GitHub_Copilot_Setup_Guide.docx](worksheets/setup/GitHub_Copilot_Setup_Guide.docx)
 
 ## Prerequisites
 
