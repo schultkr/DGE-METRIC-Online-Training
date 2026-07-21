@@ -139,6 +139,7 @@ Relevant repository locations:
 
 - [Agenda](Agenda)
 - [slides](slides)
+- [docs](docs)
 - [worksheets](worksheets)
 - [worksheets/setup](worksheets/setup)
 - [Code](Code)
