@@ -1,9 +1,5 @@
 # Financing Pathway — Worked Problem Set
 
-A self-contained exercise, companion to `energy_efficiency_pathway_simple.md`. No file citations,
-no software — just arithmetic. Attempt each "Try it yourself" before reading the solution
-underneath it.
-
 ## Your worksheet — the target, blank
 
 Copy this onto paper before reading further.
