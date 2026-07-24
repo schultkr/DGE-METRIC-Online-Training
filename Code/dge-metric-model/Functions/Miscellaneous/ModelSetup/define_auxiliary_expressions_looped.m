@@ -161,6 +161,8 @@ specs = {
     % import prices and shocks
     'P_M_',   [inbsubsectors_p, 0, 0], 'endo', 'casPMprices', 'lSelectPMPrices', 'iposPMPrices'
     'exo_M_', [inbsubsectors_p, 0, 0], 'exo',  'casPMshocks', 'lSelectPMShocks', 'iposPMShocks'
+    'exo_lMAmount_', [inbsubsectors_p, 0, 0], 'exo',  'caslMAshocks', 'lSelectlMAShocks', 'iposlMAShocks'
+    'exo_MAmt_', [inbsubsectors_p, 0, 0], 'exo',  'casMAmtshocks', 'lSelectMAmtShocks', 'iposMAmtShocks'
     
     % single-name lookups (dims [0,0,0] means use prefix as exact name)
     'exo_P',    [0, 0, 0], 'exo',  'casPShocks_single',   'lSelectPShocks',   'iposPshocks'

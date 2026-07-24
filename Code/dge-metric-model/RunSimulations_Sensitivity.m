@@ -39,67 +39,13 @@ scenarioGroupsCsv = '';
 % Parameter names/descriptions below are copied from the "Structural
 % Parameters" sheet of ExcelFiles/ModelCalibration5Sectorsand1Regions.xlsx.
 cases = [ ...
-    % % etaIA_x_p: elasticity of substitution between intermediate inputs
-    % % within a sector (all 5 sectors) -- default 0.1, near-Leontief. Low
-    % % value = intermediates are close to fixed proportions; high value =
-    % % production can reshuffle intermediate-input mix more freely.
-    % struct('label', 'etaIA2_low',       'overrides', struct('etaIA_1_p', 0.05,...
-    %                                                         'etaIA_2_p', 0.05,...
-    %                                                         'etaIA_3_p', 0.05,...
-    %                                                         'etaIA_4_p', 0.05,...
-    %                                                         'etaIA_5_p', 0.05));
-    % struct('label', 'etaIA2_high',      'overrides', struct('etaIA_1_p', 0.3,...
-    %                                                         'etaIA_2_p', 0.3,...
-    %                                                         'etaIA_3_p', 0.3,...
-    %                                                         'etaIA_4_p', 0.3,...
-    %                                                         'etaIA_5_p', 0.3));
     % etaQA_2_p: elasticity of substitution between subsectors within the
     % Energy sector (Fossil vs Renewables), default 5. This is the main
     % fuel-switching lever -- how easily output shifts from Fossil to
     % Renewables in response to relative prices (e.g. a carbon price).
     struct('label', 'etaQA2_low',       'overrides', struct('etaQA_2_p', 2.5));
+    struct('label', 'etaQA2_med',      'overrides', struct('etaQA_2_p', 5));
     struct('label', 'etaQA2_high',      'overrides', struct('etaQA_2_p', 10));
-    % % delta_2_1_p: capital depreciation rate, Fossil subsector, region 1,
-    % % default 0.05. Governs how fast fossil capacity naturally retires
-    % % (stranded-asset speed) absent any policy-forced phase-out.
-    % struct('label', 'deltaFossil_fast', 'overrides', struct('delta_2_1_p', 0.08));
-    % struct('label', 'deltaFossil_slow', 'overrides', struct('delta_2_1_p', 0.03));
-    % % etaNK_x_1_p: elasticity of substitution between labour and capital,
-    % % Fossil (2) and Renewables (3) subsectors, region 1, default 1. Governs
-    % % how much capital/labour intensity responds to relative factor costs
-    % % (e.g. capital subsidies for renewables).
-    % struct('label', 'etaNK_low',        'overrides', struct('etaNK_2_1_p', 0.5, 'etaNK_3_1_p', 0.5));
-    % struct('label', 'etaNK_high',       'overrides', struct('etaNK_2_1_p', 2,   'etaNK_3_1_p', 2));
-    % % beta_p: household discount factor, default 0.97. Governs how
-    % % forward-looking investment/consumption decisions are -- lower beta
-    % % (more impatient) discounts future transition benefits more heavily.
-    % struct('label', 'beta_low',         'overrides', struct('beta_p', 0.94));
-    % struct('label', 'beta_high',        'overrides', struct('beta_p', 0.99));
-    % % etaQ_p: elasticity of substitution between the four aggregate sectors
-    % % (Primary/Energy/Secondary/Tertiary), default 0.6. Governs how far the
-    % % whole economy can reshuffle output composition, not just within Energy.
-    % % struct('label', 'etaQ_low',         'overrides', struct('etaQ_p', 0.5));
-    % struct('label', 'etaQ_high',        'overrides', struct('etaQ_p', 0.7));
-    % % etaI_2_p: elasticity of substitution between primary factors
-    % % (capital/labour) and intermediate inputs, Energy sector, default 1.
-    % % Governs indirect fuel-switching -- e.g. substituting intermediates for
-    % % capital/labour within Energy production.
-    % struct('label', 'etaI2_low',        'overrides', struct('etaI_2_p', 0.9));
-    % struct('label', 'etaI2_high',       'overrides', struct('etaI_2_p', 1.1));
-    % % sigmaL_p: inverse Frisch elasticity of labour supply, default 1.
-    % % Lower value = labour supply more responsive to wages (elastic); higher
-    % % value = labour supply more rigid (inelastic) -- relevant to how easily
-    % % labour reallocates between fossil and renewables employment.
-    % struct('label', 'sigmaL_low',       'overrides', struct('sigmaL_p', 0.5));
-    % struct('label', 'sigmaL_high',      'overrides', struct('sigmaL_p', 2.0));
-    % % phiB_p / phiadjB_p: foreign bond adjustment costs, default 0.1 each.
-    % % Govern how costly it is for the current account to adjust when the
-    % % economy borrows abroad -- relevant to financing a fast renewables
-    % % buildout via foreign capital.
-    % struct('label', 'phiB_low',         'overrides', struct('phiB_p', 0.05));
-    % struct('label', 'phiB_high',        'overrides', struct('phiB_p', 0.3));
-    % struct('label', 'phiadjB_low',      'overrides', struct('phiadjB_p', 0.05));
-    % struct('label', 'phiadjB_high',     'overrides', struct('phiadjB_p', 0.3));
     ];
 
 if isempty(cases)

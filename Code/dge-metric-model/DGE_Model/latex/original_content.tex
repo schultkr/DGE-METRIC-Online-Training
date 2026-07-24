@@ -374,34 +374,64 @@ lhsRegPopulation\_1 = {{PoP_r}}_{t}
 rhsRegPopulation\_1 = {{LF_r}}_{t}+\left({{PoP_{r,0}}}-{{LF_{r,0}}}\right)\, \exp\left({{\eta^{NLF}_{r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsImportPrice\_1 = {{P^{M}_s}}_{t}
+ImportCrisis\_1 = {{\eta^{l,Import Shock,k}}}_{t}==1
 \end{dmath*}
 \begin{dmath*}
-rhsImportPrice\_1 = {{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}
+ImportGrowth\_1 = \frac{{{M^F_{s,r}}}_{t}+{{M^I_{s,r}}}_{t}}{{{M^I_{s,r}}}_{t-1}+{{M^F_{s,r}}}_{t-1}}
 \end{dmath*}
 \begin{dmath*}
-lhsImportPrice\_2 = {{P^{M}_s}}_{t}
+lhsImportPrice\_1 = {{P^{M}_s}}_{t}\, \left(1-{ImportCrisis\_1}\right)+{ImportCrisis\_1}\, {ImportGrowth\_1}
 \end{dmath*}
 \begin{dmath*}
-rhsImportPrice\_2 = {{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}
+rhsImportPrice\_1 = \left(1-{ImportCrisis\_1}\right)\, \left({{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}\right)+{ImportCrisis\_1}\, \exp\left({{\eta^{Import Shock Size,k}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsImportPrice\_3 = {{P^{M}_s}}_{t}
+ImportCrisis\_2 = {{\eta^{l,Import Shock,k}}}_{t}==1
 \end{dmath*}
 \begin{dmath*}
-rhsImportPrice\_3 = {{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}
+ImportGrowth\_2 = \frac{{{M^F_{s,r}}}_{t}+{{M^I_{s,r}}}_{t}}{{{M^I_{s,r}}}_{t-1}+{{M^F_{s,r}}}_{t-1}}
 \end{dmath*}
 \begin{dmath*}
-lhsImportPrice\_4 = {{P^{M}_s}}_{t}
+lhsImportPrice\_2 = {{P^{M}_s}}_{t}\, \left(1-{ImportCrisis\_2}\right)+{ImportCrisis\_2}\, {ImportGrowth\_2}
 \end{dmath*}
 \begin{dmath*}
-rhsImportPrice\_4 = {{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}
+rhsImportPrice\_2 = \left(1-{ImportCrisis\_2}\right)\, \left({{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}\right)+{ImportCrisis\_2}\, \exp\left({{\eta^{Import Shock Size,k}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsImportPrice\_5 = {{P^{M}_s}}_{t}
+ImportCrisis\_3 = {{\eta^{l,Import Shock,k}}}_{t}==1
 \end{dmath*}
 \begin{dmath*}
-rhsImportPrice\_5 = {{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}
+ImportGrowth\_3 = \frac{{{M^F_{s,r}}}_{t}+{{M^I_{s,r}}}_{t}}{{{M^I_{s,r}}}_{t-1}+{{M^F_{s,r}}}_{t-1}}
+\end{dmath*}
+\begin{dmath*}
+lhsImportPrice\_3 = {{P^{M}_s}}_{t}\, \left(1-{ImportCrisis\_3}\right)+{ImportCrisis\_3}\, {ImportGrowth\_3}
+\end{dmath*}
+\begin{dmath*}
+rhsImportPrice\_3 = \left(1-{ImportCrisis\_3}\right)\, \left({{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}\right)+{ImportCrisis\_3}\, \exp\left({{\eta^{Import Shock Size,k}}}_{t}\right)
+\end{dmath*}
+\begin{dmath*}
+ImportCrisis\_4 = {{\eta^{l,Import Shock,k}}}_{t}==1
+\end{dmath*}
+\begin{dmath*}
+ImportGrowth\_4 = \frac{{{M^F_{s,r}}}_{t}+{{M^I_{s,r}}}_{t}}{{{M^I_{s,r}}}_{t-1}+{{M^F_{s,r}}}_{t-1}}
+\end{dmath*}
+\begin{dmath*}
+lhsImportPrice\_4 = {{P^{M}_s}}_{t}\, \left(1-{ImportCrisis\_4}\right)+{ImportCrisis\_4}\, {ImportGrowth\_4}
+\end{dmath*}
+\begin{dmath*}
+rhsImportPrice\_4 = \left(1-{ImportCrisis\_4}\right)\, \left({{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}\right)+{ImportCrisis\_4}\, \exp\left({{\eta^{Import Shock Size,k}}}_{t}\right)
+\end{dmath*}
+\begin{dmath*}
+ImportCrisis\_5 = {{\eta^{l,Import Shock,k}}}_{t}==1
+\end{dmath*}
+\begin{dmath*}
+ImportGrowth\_5 = \frac{{{M^F_{s,r}}}_{t}+{{M^I_{s,r}}}_{t}}{{{M^I_{s,r}}}_{t-1}+{{M^F_{s,r}}}_{t-1}}
+\end{dmath*}
+\begin{dmath*}
+lhsImportPrice\_5 = {{P^{M}_s}}_{t}\, \left(1-{ImportCrisis\_5}\right)+{ImportCrisis\_5}\, {ImportGrowth\_5}
+\end{dmath*}
+\begin{dmath*}
+rhsImportPrice\_5 = \left(1-{ImportCrisis\_5}\right)\, \left({{P^Q_{s,r}}}_{t}+{{\eta^{M,k}}}_{t}\right)+{ImportCrisis\_5}\, \exp\left({{\eta^{Import Shock Size,k}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 lhsWorldInterestRate = {{r^{f}}}_{t}
@@ -470,10 +500,10 @@ lhsLomHousing\_1 = \frac{{{H_r}}_{t}}{{{PoP_r}}_{t}}
 rhsLomHousing\_1 = \left(1-{{\delta^H}}\right)\, \frac{{{H_r}}_{t-1}}{{{PoP_r}}_{t-1}}+\frac{{{I^H_r}}_{t}}{{{PoP_r}}_{t}}-\frac{{{D^H_r}}_{t}}{{{PoP_r}}_{t}}
 \end{dmath*}
 \begin{dmath*}
-lhsHousingTarget\_1 = \frac{{{H_r}}_{t}}{{{PoP_r}}_{t}}
+lhsHousingTarget\_1 = {{P^H_r}}_{t}
 \end{dmath*}
 \begin{dmath*}
-rhsHousingTarget\_1 = {{H_{r,0}}}+{{\eta^{H}_r}}_{t}
+rhsHousingTarget\_1 = {{P^H_{r,0}}}\, \exp\left({{\eta^{H}_r}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 lhsFocHousing\_1 = {\lambda_r}_{t}\, {{\omega^H_r}}_{t}
@@ -1274,10 +1304,10 @@ lhsSectorTfpFinal\_1\_1 = {{A^{F}_{k,r}}}_{t}
 rhsSectorTfpFinal\_1\_1 = \exp\left({{\eta^{A^F,k,r}}}_{t}\right)\, {{EE_r}}_{t}^{1=={{s^{Energy}}}}
 \end{dmath*}
 \begin{dmath*}
-lhsTfp\_1\_1 = {{P_{s,r}}}_{t}\, {{Y_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)
+lhsTfp\_1\_1 = \log\left({{A_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)\right)
 \end{dmath*}
 \begin{dmath*}
-rhsTfp\_1\_1 = {{l^{Q}_{s,r}}}\, {{P_{s,r,0}}}\, {{Y_{s,r,0}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, {{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)
+rhsTfp\_1\_1 = {{l^{Q}_{s,r}}}\, \log\left({{A_{s,r}}}\, {{K^G_{r}}}_{t}^{{{\phi^{G}}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, \log\left({{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)\right)
 \end{dmath*}
 \begin{dmath*}
 lhsTfpIntermediates\_1\_1 = \log\left({{A^{I}_{s,r}}}_{t}\right)
@@ -1292,10 +1322,10 @@ lhsCapitalProductivity\_1\_1 = {{A^{K}_{s,r}}}_{t}
 rhsCapitalProductivity\_1\_1 = \exp\left({{\eta^{A^{K},k,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsLabourProductivity\_1\_1 = {{N_{s,r}}}_{t}
+lhsLabourProductivity\_1\_1 = \log\left({{A^{N}_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsLabourProductivity\_1\_1 = {{N_{s,r,0}}}\, {{N_{r,0}}}\, \exp\left({{\eta^{A^{N},k,r}}}_{t}\right)
+rhsLabourProductivity\_1\_1 = {{\eta^{A^{N},k,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
 lhsLabourDamage\_1\_1 = {{D^N_{s,r}}}_{t}
@@ -1364,10 +1394,10 @@ lhsSectorTfpFinal\_1\_2 = {{A^{F}_{k,r}}}_{t}
 rhsSectorTfpFinal\_1\_2 = \exp\left({{\eta^{A^F,k,r}}}_{t}\right)\, {{EE_r}}_{t}^{2=={{s^{Energy}}}}
 \end{dmath*}
 \begin{dmath*}
-lhsTfp\_1\_2 = {{P_{s,r}}}_{t}\, {{Y_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)
+lhsTfp\_1\_2 = \log\left({{A_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)\right)
 \end{dmath*}
 \begin{dmath*}
-rhsTfp\_1\_2 = {{l^{Q}_{s,r}}}\, {{P_{s,r,0}}}\, {{Y_{s,r,0}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, {{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)
+rhsTfp\_1\_2 = {{l^{Q}_{s,r}}}\, \log\left({{K^G_{r}}}_{t}^{{{\phi^{G}}}}\, {{A_{s,r}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, \log\left({{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)\right)
 \end{dmath*}
 \begin{dmath*}
 lhsTfpIntermediates\_1\_2 = \log\left({{A^{I}_{s,r}}}_{t}\right)
@@ -1382,10 +1412,10 @@ lhsCapitalProductivity\_1\_2 = {{A^{K}_{s,r}}}_{t}
 rhsCapitalProductivity\_1\_2 = \exp\left({{\eta^{A^{K},k,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsLabourProductivity\_1\_2 = {{N_{s,r}}}_{t}
+lhsLabourProductivity\_1\_2 = \log\left({{A^{N}_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsLabourProductivity\_1\_2 = {{N_{r,0}}}\, {{N_{s,r,0}}}\, \exp\left({{\eta^{A^{N},k,r}}}_{t}\right)
+rhsLabourProductivity\_1\_2 = {{\eta^{A^{N},k,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
 lhsLabourDamage\_1\_2 = {{D^N_{s,r}}}_{t}
@@ -1448,10 +1478,10 @@ lhsCapUtilization\_1\_2 = {{u^K_{s,r}}}_{t}
 rhsCapUtilization\_1\_2 = \exp\left({{\eta^{u^K,s,r}}}_{t}\right)+\left({{r^f_0}}+{{\eta^{r^G,s,r}}}_{t}\right)\, {{\ell^{IG,s,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
-lhsTfp\_1\_3 = {{P_{s,r}}}_{t}\, {{Y_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)
+lhsTfp\_1\_3 = \log\left({{A_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)\right)
 \end{dmath*}
 \begin{dmath*}
-rhsTfp\_1\_3 = {{l^{Q}_{s,r}}}\, {{P_{s,r,0}}}\, {{Y_{s,r,0}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, {{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)
+rhsTfp\_1\_3 = {{l^{Q}_{s,r}}}\, \log\left({{K^G_{r}}}_{t}^{{{\phi^{G}}}}\, {{A_{s,r}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, \log\left({{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)\right)
 \end{dmath*}
 \begin{dmath*}
 lhsTfpIntermediates\_1\_3 = \log\left({{A^{I}_{s,r}}}_{t}\right)
@@ -1466,10 +1496,10 @@ lhsCapitalProductivity\_1\_3 = {{A^{K}_{s,r}}}_{t}
 rhsCapitalProductivity\_1\_3 = \exp\left({{\eta^{A^{K},k,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsLabourProductivity\_1\_3 = {{N_{s,r}}}_{t}
+lhsLabourProductivity\_1\_3 = \log\left({{A^{N}_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsLabourProductivity\_1\_3 = {{N_{r,0}}}\, {{N_{s,r,0}}}\, \exp\left({{\eta^{A^{N},k,r}}}_{t}\right)
+rhsLabourProductivity\_1\_3 = {{\eta^{A^{N},k,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
 lhsLabourDamage\_1\_3 = {{D^N_{s,r}}}_{t}
@@ -1538,10 +1568,10 @@ lhsSectorTfpFinal\_1\_3 = {{A^{F}_{k,r}}}_{t}
 rhsSectorTfpFinal\_1\_3 = \exp\left({{\eta^{A^F,k,r}}}_{t}\right)\, {{EE_r}}_{t}^{3=={{s^{Energy}}}}
 \end{dmath*}
 \begin{dmath*}
-lhsTfp\_1\_4 = {{P_{s,r}}}_{t}\, {{Y_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)
+lhsTfp\_1\_4 = \log\left({{A_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)\right)
 \end{dmath*}
 \begin{dmath*}
-rhsTfp\_1\_4 = {{l^{Q}_{s,r}}}\, {{P_{s,r,0}}}\, {{Y_{s,r,0}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, {{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)
+rhsTfp\_1\_4 = {{l^{Q}_{s,r}}}\, \log\left({{K^G_{r}}}_{t}^{{{\phi^{G}}}}\, {{A_{s,r}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, \log\left({{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)\right)
 \end{dmath*}
 \begin{dmath*}
 lhsTfpIntermediates\_1\_4 = \log\left({{A^{I}_{s,r}}}_{t}\right)
@@ -1556,10 +1586,10 @@ lhsCapitalProductivity\_1\_4 = {{A^{K}_{s,r}}}_{t}
 rhsCapitalProductivity\_1\_4 = \exp\left({{\eta^{A^{K},k,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsLabourProductivity\_1\_4 = {{N_{s,r}}}_{t}
+lhsLabourProductivity\_1\_4 = \log\left({{A^{N}_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsLabourProductivity\_1\_4 = {{N_{r,0}}}\, {{N_{s,r,0}}}\, \exp\left({{\eta^{A^{N},k,r}}}_{t}\right)
+rhsLabourProductivity\_1\_4 = {{\eta^{A^{N},k,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
 lhsLabourDamage\_1\_4 = {{D^N_{s,r}}}_{t}
@@ -1628,10 +1658,10 @@ lhsSectorTfpFinal\_1\_4 = {{A^{F}_{k,r}}}_{t}
 rhsSectorTfpFinal\_1\_4 = \exp\left({{\eta^{A^F,k,r}}}_{t}\right)\, {{EE_r}}_{t}^{4=={{s^{Energy}}}}
 \end{dmath*}
 \begin{dmath*}
-lhsTfp\_1\_5 = {{P_{s,r}}}_{t}\, {{Y_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)
+lhsTfp\_1\_5 = \log\left({{A_{s,r}}}_{t}\, {{l^{Q}_{s,r}}}+{{Q_{s,r}}}_{t}\, \left(1-{{l^{Q}_{s,r}}}\right)\right)
 \end{dmath*}
 \begin{dmath*}
-rhsTfp\_1\_5 = {{l^{Q}_{s,r}}}\, {{P_{s,r,0}}}\, {{Y_{s,r,0}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, {{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)
+rhsTfp\_1\_5 = {{l^{Q}_{s,r}}}\, \log\left({{K^G_{r}}}_{t}^{{{\phi^{G}}}}\, {{A_{s,r}}}\, \exp\left({{\eta^{A,s,r}}}_{t}+{{\eta^{A,s,r}}}_{t}\right)\right)+\left(1-{{l^{Q}_{s,r}}}\right)\, \log\left({{Q_{s,r,0}}}\, \exp\left({{\eta^{E,s,r}}}_{t}\right)\right)
 \end{dmath*}
 \begin{dmath*}
 lhsTfpIntermediates\_1\_5 = \log\left({{A^{I}_{s,r}}}_{t}\right)
@@ -1646,10 +1676,10 @@ lhsCapitalProductivity\_1\_5 = {{A^{K}_{s,r}}}_{t}
 rhsCapitalProductivity\_1\_5 = \exp\left({{\eta^{A^{K},k,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-lhsLabourProductivity\_1\_5 = {{N_{s,r}}}_{t}
+lhsLabourProductivity\_1\_5 = \log\left({{A^{N}_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsLabourProductivity\_1\_5 = {{N_{r,0}}}\, {{N_{s,r,0}}}\, \exp\left({{\eta^{A^{N},k,r}}}_{t}\right)
+rhsLabourProductivity\_1\_5 = {{\eta^{A^{N},k,r}}}_{t}
 \end{dmath*}
 \begin{dmath*}
 lhsLabourDamage\_1\_5 = {{D^N_{s,r}}}_{t}
@@ -2201,7 +2231,7 @@ lhsIntermediateComposite\_1\_1 = {{Q^{I}_{s,r}}}_{t}
 rhsIntermediateComposite\_1\_1 = \left({{\eta^{I,A}_{s}}}==1\right)\, \exp\left({{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_1\_1\_1}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_1\_1\_2}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_1\_1\_3}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_1\_1\_4}\right)\right)+\left({{\eta^{I,A}_{s}}}\neq 1\right)\, \left({{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_1\_1\_1}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_1\_1\_2}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_1\_1\_3}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_1\_1\_4}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}\right)^{\frac{{{\eta^{I,A}_{s}}}}{{{\eta^{I,A}_{s}}}-1+\left({{\eta^{I,A}_{s}}}==1\right)}}
 \end{dmath*}
 \begin{dmath*}
-damageAdjustedTFP\_1\_1 = \left(1-{{D_{s,r}}}_{t}\right)\, {{A_{s,r}}}_{t}
+damageAdjustedTFP\_1\_1 = {{A_{s,r}}}_{t}\, \left(1-{{D_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 effectiveCapitalInput\_1\_1 = max(1e-8,{{K_{s,r}}}_{t-1}\, {{u^K_{s,r}}}_{t}\, {{A^{K}_{s,r}}}_{t})
@@ -2456,7 +2486,7 @@ lhsIntermediateComposite\_2\_1 = {{Q^{I}_{s,r}}}_{t}
 rhsIntermediateComposite\_2\_1 = \left({{\eta^{I,A}_{s}}}==1\right)\, \exp\left({{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_2\_1\_1}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_2\_1\_2}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_2\_1\_3}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_2\_1\_4}\right)\right)+\left({{\eta^{I,A}_{s}}}\neq 1\right)\, \left({{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_2\_1\_1}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_2\_1\_2}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_2\_1\_3}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_2\_1\_4}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}\right)^{\frac{{{\eta^{I,A}_{s}}}}{{{\eta^{I,A}_{s}}}-1+\left({{\eta^{I,A}_{s}}}==1\right)}}
 \end{dmath*}
 \begin{dmath*}
-damageAdjustedTFP\_2\_1 = \left(1-{{D_{s,r}}}_{t}\right)\, {{A_{s,r}}}_{t}
+damageAdjustedTFP\_2\_1 = {{A_{s,r}}}_{t}\, \left(1-{{D_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 effectiveCapitalInput\_2\_1 = max(1e-8,{{K_{s,r}}}_{t-1}\, {{u^K_{s,r}}}_{t}\, {{A^{K}_{s,r}}}_{t})
@@ -2711,7 +2741,7 @@ lhsIntermediateComposite\_3\_1 = {{Q^{I}_{s,r}}}_{t}
 rhsIntermediateComposite\_3\_1 = \left({{\eta^{I,A}_{s}}}==1\right)\, \exp\left({{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_3\_1\_1}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_3\_1\_2}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_3\_1\_3}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_3\_1\_4}\right)\right)+\left({{\eta^{I,A}_{s}}}\neq 1\right)\, \left({{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_3\_1\_1}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_3\_1\_2}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_3\_1\_3}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_3\_1\_4}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}\right)^{\frac{{{\eta^{I,A}_{s}}}}{{{\eta^{I,A}_{s}}}-1+\left({{\eta^{I,A}_{s}}}==1\right)}}
 \end{dmath*}
 \begin{dmath*}
-damageAdjustedTFP\_3\_1 = \left(1-{{D_{s,r}}}_{t}\right)\, {{A_{s,r}}}_{t}
+damageAdjustedTFP\_3\_1 = {{A_{s,r}}}_{t}\, \left(1-{{D_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 effectiveCapitalInput\_3\_1 = max(1e-8,{{K_{s,r}}}_{t-1}\, {{u^K_{s,r}}}_{t}\, {{A^{K}_{s,r}}}_{t})
@@ -2966,7 +2996,7 @@ lhsIntermediateComposite\_4\_1 = {{Q^{I}_{s,r}}}_{t}
 rhsIntermediateComposite\_4\_1 = \left({{\eta^{I,A}_{s}}}==1\right)\, \exp\left({{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_4\_1\_1}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_4\_1\_2}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_4\_1\_3}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_4\_1\_4}\right)\right)+\left({{\eta^{I,A}_{s}}}\neq 1\right)\, \left({{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_4\_1\_1}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_4\_1\_2}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_4\_1\_3}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_4\_1\_4}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}\right)^{\frac{{{\eta^{I,A}_{s}}}}{{{\eta^{I,A}_{s}}}-1+\left({{\eta^{I,A}_{s}}}==1\right)}}
 \end{dmath*}
 \begin{dmath*}
-damageAdjustedTFP\_4\_1 = \left(1-{{D_{s,r}}}_{t}\right)\, {{A_{s,r}}}_{t}
+damageAdjustedTFP\_4\_1 = {{A_{s,r}}}_{t}\, \left(1-{{D_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 effectiveCapitalInput\_4\_1 = max(1e-8,{{K_{s,r}}}_{t-1}\, {{u^K_{s,r}}}_{t}\, {{A^{K}_{s,r}}}_{t})
@@ -3221,7 +3251,7 @@ lhsIntermediateComposite\_5\_1 = {{Q^{I}_{s,r}}}_{t}
 rhsIntermediateComposite\_5\_1 = \left({{\eta^{I,A}_{s}}}==1\right)\, \exp\left({{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_5\_1\_1}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_5\_1\_2}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_5\_1\_3}\right)+{{\omega^{Q}_{s,r,k}}}\, \log\left({safeIntermediateInput\_5\_1\_4}\right)\right)+\left({{\eta^{I,A}_{s}}}\neq 1\right)\, \left({{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_5\_1\_1}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_5\_1\_2}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_5\_1\_3}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}+{{\omega^{Q}_{s,r,k}}}^{\frac{1}{{{\eta^{I,A}_{s}}}}}\, {safeIntermediateInput\_5\_1\_4}^{\frac{{{\eta^{I,A}_{s}}}-1}{{{\eta^{I,A}_{s}}}}}\right)^{\frac{{{\eta^{I,A}_{s}}}}{{{\eta^{I,A}_{s}}}-1+\left({{\eta^{I,A}_{s}}}==1\right)}}
 \end{dmath*}
 \begin{dmath*}
-damageAdjustedTFP\_5\_1 = \left(1-{{D_{s,r}}}_{t}\right)\, {{A_{s,r}}}_{t}
+damageAdjustedTFP\_5\_1 = {{A_{s,r}}}_{t}\, \left(1-{{D_{s,r}}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 effectiveCapitalInput\_5\_1 = max(1e-8,{{K_{s,r}}}_{t-1}\, {{u^K_{s,r}}}_{t}\, {{A^{K}_{s,r}}}_{t})
@@ -3356,10 +3386,10 @@ lhsRegionalSubsidies\_1 = {{\tau^{S}_{r}}}_{t}\, \left(\left(1\neq {{s^{Fossil}}
 rhsRegionalSubsidies\_1 = {{E_r}}_{t}\, {{P^E_r}}_{t}\, {{\eta^{\tau^{S}}_r}}_{t}
 \end{dmath*}
 \begin{dmath*}
-lhsRegionalEmissionPolicy\_1 = {{P^E_r}}_{t}+{{\phi^{G}}}\, \left({{\eta^{E,Base}_r}}_{t}+{{\eta^{E}_r}}_{t}+{{\eta^{Cap and Trade International}}}_{t}+{{\eta^{CapTrade}_r}}_{t}\right)
+lhsRegionalEmissionPolicy\_1 = {{E_r}}_{t}+{{\phi^{G}}}\, \left({{\eta^{P^E}_r}}_{t}+{{\eta^{P^E}}}_{t}+{{\eta^{Cap and Trade International}}}_{t}+{{\eta^{CapTrade}_r}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
-rhsRegionalEmissionPolicy\_1 = {{P^E_{r,0}}}+{{\eta^{P^E}_r}}_{t}+{{\eta^{P^E}}}_{t}
+rhsRegionalEmissionPolicy\_1 = {{E_{r,0}}}\, \exp\left({{\eta^{E,Base}_r}}_{t}+{{\eta^{E}_r}}_{t}\right)
 \end{dmath*}
 \begin{dmath*}
 lhsRegionalEnergyEfficiency\_1 = \left({{l^{Y}}}==1\right)\, {{EE_r}}_{t}+{{Q_{s,r}}}_{t}\, \left({{l^{Y}}}==0\right)

@@ -591,6 +591,8 @@ function oo_ = apply_baseline_step_shocks(oo_, iaTargetGrowthRates, iaTargetGrow
     % oo_ = copy_exo_from_start(oo_, posIdx.iposAIShocksec);
     oo_.exo_simul(:, posIdx.iposAIShocksec)  = oo_.exo_simul_start(:, posIdx.iposAIShocksec) .* stepFrac;
     oo_.exo_simul(:, posIdx.iposEERegShocks) = oo_.exo_simul_start(:, posIdx.iposEERegShocks) .* stepFrac;
+    oo_.exo_simul(:, posIdx.iposMAmtShocks) = oo_.exo_simul_start(:, posIdx.iposMAmtShocks) .* stepFrac;
+    
     if any(posIdx.iposREShocks ~=0)
         oo_.exo_simul(:, posIdx.iposREShocks) = oo_.exo_simul_start(:, posIdx.iposREShocks) .* (icostep / iStep);
     end
@@ -636,7 +638,7 @@ function oo_ = apply_climate_step_shocks(oo_, icostep, iStep, lCapandTrade_p, po
             posIdx.iposUShocks, posIdx.iposPVShocks, posIdx.ipossGShocks, posIdx.iposKGShocks, posIdx.iposrGShocks ,...
             posIdx.iposphiKShocks, posIdx.iposTauSShocks, posIdx.iposkapEShock, posIdx.iposPKShocks, posIdx.iposGAShocks,...
             posIdx.iposLFDIShareShocks,posIdx.iposLIGShareShocks,posIdx.iposIFDIShocks,posIdx.iposWedgeShocks,posIdx.iposFossilExpShocks,...
-            posIdx.iposENOETSShocks];
+            posIdx.iposENOETSShocks, posIdx.iposMAmtShocks];
     
     oo_ = scale_exo_from_base(oo_,baseVars , stepFrac);
 end

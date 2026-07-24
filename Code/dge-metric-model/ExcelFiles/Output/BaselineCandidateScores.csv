@@ -1,2 +1,2 @@
 Sheet,Sensitivity,Scenario,OutputCsv,Solved,GrowthFeasible,MaxAbsMuI,MaxAbsCapitalLomGap,MaxAbsInvGdpTargetDiff,MaxAbsPriceWeightedGrowthDiff,MaxAbsAggregateGrowthDiff,MaxAbsGrowthDiff,RunError,GrowthAuditError
-Baseline,,Baseline,,0,0,NaN,NaN,NaN,NaN,NaN,NaN,Dynare: preprocessing failed,
+Baseline,,Baseline,ExcelFiles\Output\Baseline.csv,1,1,0.0449967809002016,0.0460244926460638,5.82867087928207e-16,3.89687215829326e-09,7.17403914052284e-12,3.89687215829326e-09,,

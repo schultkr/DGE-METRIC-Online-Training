@@ -5,8 +5,12 @@
 @# for sec in 1:Sectors
     @# for subsec in Subsecstart[sec]:Subsecend[sec]
         // Import price: world supply price equals region-1 producer price plus a price wedge.
-        #lhsImportPrice_@{subsec} = P_M_@{subsec};
-        #rhsImportPrice_@{subsec} = P_Q_@{subsec}_1 + exo_M_@{subsec};
+        #ImportCrisis_@{subsec} = (exo_lMAmount_@{subsec} == 1);
+        #ImportGrowth_@{subsec} = (M_I_@{subsec}_@{reg} + M_F_@{subsec}_@{reg}) / (M_I_@{subsec}_@{reg}(-1) + M_F_@{subsec}_@{reg}(-1));
+        #lhsImportPrice_@{subsec} = P_M_@{subsec} * (1 - ImportCrisis_@{subsec}) + 
+                                    ImportGrowth_@{subsec} * ImportCrisis_@{subsec};
+        #rhsImportPrice_@{subsec} = (P_Q_@{subsec}_1 + exo_M_@{subsec}) * (1 - ImportCrisis_@{subsec}) + 
+                                    exp(exo_MAmt_@{subsec}) * ImportCrisis_@{subsec};
         [name = 'import price @{subsec}']
         (1 + lhsImportPrice_@{subsec}) / (1 + rhsImportPrice_@{subsec}) = 1;
     @# endfor

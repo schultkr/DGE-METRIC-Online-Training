@@ -184,7 +184,7 @@ PoP $PoP$ (long_name = 'population')
         @# endfor
     @# endif
 @# endfor
-//;
+;
 % ====================================
 % === Declare Exogenous Variables ===
 % ====================================
@@ -196,6 +196,8 @@ exo_beta ${\eta^{\beta}}$ (long_name = 'exogenous discount factor')
     exo_A_F_@{sec}_@{reg} ${\eta^{A^F,k,r}}$ (long_name = 'exogenous final productivity')
     @# for subsec in Subsecstart[sec]:Subsecend[sec]
         exo_M_@{subsec} ${\eta^{M,k}}$ (long_name = 'exogenous price development of sector imports')
+        exo_lMAmount_@{subsec} ${\eta^{l,Import Shock,k}}$ (long_name = 'exogenous indicator/switch variable triggering a shortage situation of imports')
+        exo_MAmt_@{subsec} ${\eta^{Import Shock Size,k}}$ (long_name = 'exogenous import shock relative to previous period imports')
         @# for reg in 1:Regions
             exo_X_@{subsec}_@{reg} ${\eta^{X,s,r}}$ (long_name = 'exogenous demand for sector exports')
             exo_beta_@{subsec}_@{reg} ${\eta^{beta,s,r}}$ (long_name = 'exogenous discount shock')

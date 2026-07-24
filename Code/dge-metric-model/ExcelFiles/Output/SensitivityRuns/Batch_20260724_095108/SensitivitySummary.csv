@@ -1,0 +1,4 @@
+CaseLabel,OutputSubfolder,Status,Message,DurationMinutes
+etaQA2_low,SensitivityRuns\Batch_20260724_095108\01_etaQA2_low,ok,Completed,5.30543105833333
+etaQA2_med,SensitivityRuns\Batch_20260724_095108\02_etaQA2_med,ok,Completed,5.40101352
+etaQA2_high,SensitivityRuns\Batch_20260724_095108\03_etaQA2_high,ok,Completed,5.214769735

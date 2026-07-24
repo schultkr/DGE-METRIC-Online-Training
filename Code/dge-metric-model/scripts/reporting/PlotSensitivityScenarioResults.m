@@ -2,7 +2,8 @@
 %
 % Compare simulation outputs across sensitivity-parameter runs.
 % Expects runs under ExcelFiles/Output/SensitivityRuns/<BatchName>/<CaseFolder>/
-% with scenario CSV files such as Baseline.csv, NZ.csv, etc.
+% with per-case structScenarioResults*.mat files copied by
+% RunSimulations_Sensitivity.m.
 %
 % Usage:
 %   run('scripts/reporting/PlotSensitivityScenarioResults.m')
@@ -17,7 +18,7 @@ cd(repoRoot);
 cfg = struct();
 
 % Leave empty to auto-select latest sensitivity batch.
-cfg.batchName = 'Batch_20260723_204453';
+cfg.batchName = '';
 
 % Scenarios to plot. Must match CSV filenames in case folders.
 cfg.scenarios = {'Baseline', 'NZ'};
@@ -48,7 +49,9 @@ cfg.yearRange = [2025, 2050];
 cfg.lineWidth = 1.8;
 cfg.figureVisible = 'off';
 cfg.outputSubdir = 'Plots';
-cfg.caseCsvSubdirs = {'', 'ExcelOutput'};
+cfg.structResultsPattern = 'structScenarioResults*.mat';
+cfg.startYear = 2025;
+cfg.maxPeriods = 100;
 
 % Top-impact sensitivity chart configuration.
 % Computes percent deviation at terminal year:
@@ -67,16 +70,23 @@ if ~exist(sensitivityRoot, 'dir')
         'Sensitivity root not found: %s', sensitivityRoot);
 end
 
-batchDir = resolve_batch_dir(sensitivityRoot, cfg.batchName, cfg.scenarios, cfg.outputSubdir, cfg.caseCsvSubdirs);
+batchDir = resolve_batch_dir(sensitivityRoot, cfg.batchName, cfg.scenarios, cfg.outputSubdir, cfg.structResultsPattern);
 plotDir = fullfile(batchDir, cfg.outputSubdir);
 ensure_dir(plotDir);
 
-caseFolders = list_case_folders(batchDir, cfg.outputSubdir, cfg.caseCsvSubdirs, cfg.scenarios);
+caseFolders = list_case_folders(batchDir, cfg.outputSubdir, cfg.structResultsPattern, cfg.scenarios);
 if isempty(caseFolders)
     error('PlotSensitivityScenarioResults:NoCaseFolders', ...
-        ['No case folders with scenario CSV files were found in batch: %s\n' ...
-         'Expected scenario files like Baseline.csv either directly under each case folder\n' ...
-         'or under case/ExcelOutput/.'], batchDir);
+        ['No case folders with structScenarioResults*.mat files were found in batch: %s\n' ...
+         'Expected sensitivity case folders to contain MAT results copied by RunSimulations_Sensitivity.m.'], batchDir);
+end
+
+caseData = load_case_data(batchDir, caseFolders, cfg.scenarios, cfg.structResultsPattern, ...
+    cfg.startYear, cfg.maxPeriods, cfg.yearRange);
+caseFolders = {caseData.caseLabel};
+if isempty(caseFolders)
+    error('PlotSensitivityScenarioResults:NoScenarioData', ...
+        'No configured scenarios were found inside %s files.', cfg.structResultsPattern);
 end
 
 fprintf('Using sensitivity batch: %s\n', batchDir);
@@ -89,7 +99,7 @@ summaryRows = table();
 for iScen = 1:numel(cfg.scenarios)
     scenarioName = cfg.scenarios{iScen};
 
-    seriesByCase = load_scenario_tables(batchDir, caseFolders, scenarioName, cfg.caseCsvSubdirs, cfg.yearRange);
+    seriesByCase = load_scenario_tables(caseData, scenarioName);
     if isempty(seriesByCase)
         warning('PlotSensitivityScenarioResults:ScenarioMissing', ...
             'Scenario %s not found in any case folder. Skipping.', scenarioName);
@@ -177,25 +187,14 @@ if numel(cfg.comparisonPair) == 2
         colorIdx = 0;
 
         for iCase = 1:numel(caseFolders)
-            caseName = caseFolders{iCase};
-            caseDir = fullfile(batchDir, caseName);
-
-            csvA = resolve_scenario_csv_path(caseDir, scenarioA, cfg.caseCsvSubdirs);
-            csvB = resolve_scenario_csv_path(caseDir, scenarioB, cfg.caseCsvSubdirs);
-            if isempty(csvA) || isempty(csvB)
+            caseEntry = caseData(iCase);
+            if ~isfield(caseEntry.scenarioTables, scenarioA) || ~isfield(caseEntry.scenarioTables, scenarioB)
                 continue
             end
 
-            tabA = read_table_preserve_names(csvA);
-            tabB = read_table_preserve_names(csvB);
-            if ~ismember('Year', tabA.Properties.VariableNames) || ~ismember('Year', tabB.Properties.VariableNames)
-                continue
-            end
-            tabA = restrict_to_year_range(tabA, cfg.yearRange);
-            tabB = restrict_to_year_range(tabB, cfg.yearRange);
-            if isempty(tabA) || isempty(tabB)
-                continue
-            end
+            caseName = caseEntry.caseLabel;
+            tabA = caseEntry.scenarioTables.(scenarioA);
+            tabB = caseEntry.scenarioTables.(scenarioB);
             if ~ismember(varName, tabA.Properties.VariableNames) || ~ismember(varName, tabB.Properties.VariableNames)
                 continue
             end
@@ -259,8 +258,7 @@ if ~isempty(summaryRows)
 end
 
 if cfg.topImpact.enabled && numel(cfg.comparisonPair) == 2
-    topImpactTable = build_top_impact_table(batchDir, caseFolders, cfg.comparisonPair, ...
-        cfg.topImpact.variable, cfg.caseCsvSubdirs);
+    topImpactTable = build_top_impact_table(batchDir, caseData, cfg.comparisonPair, cfg.topImpact.variable);
     if ~isempty(topImpactTable)
         topImpactTable = sortrows(topImpactTable, 'AbsPercentDeviation', 'descend');
         topN = min(cfg.topImpact.topN, height(topImpactTable));
@@ -306,16 +304,16 @@ fprintf('Plots written to: %s\n', plotDir);
 
 %% Local functions
 
-function batchDir = resolve_batch_dir(sensitivityRoot, batchName, scenarios, outputSubdir, caseCsvSubdirs)
+function batchDir = resolve_batch_dir(sensitivityRoot, batchName, scenarios, outputSubdir, structResultsPattern)
     if ~isempty(strtrim(batchName))
         batchDir = fullfile(sensitivityRoot, batchName);
         if ~exist(batchDir, 'dir')
             error('PlotSensitivityScenarioResults:BatchNotFound', ...
                 'Specified batch not found: %s', batchDir);
         end
-        if ~batch_has_scenario_csvs(batchDir, scenarios, outputSubdir, caseCsvSubdirs)
-            warning('PlotSensitivityScenarioResults:SelectedBatchHasNoScenarioCSVs', ...
-                'Selected batch %s does not seem to contain scenario CSVs for configured scenarios.', batchDir);
+        if ~batch_has_scenario_results(batchDir, scenarios, outputSubdir, structResultsPattern)
+            warning('PlotSensitivityScenarioResults:SelectedBatchHasNoScenarioResults', ...
+                'Selected batch %s does not seem to contain MAT scenario results for configured scenarios.', batchDir);
         end
         return
     end
@@ -331,7 +329,7 @@ function batchDir = resolve_batch_dir(sensitivityRoot, batchName, scenarios, out
             'No Batch_* or Sensitivity_* folder found under %s', sensitivityRoot);
     end
 
-    % Prefer most-recent folders that actually contain scenario CSV files.
+    % Prefer most-recent folders that actually contain scenario MAT results.
     timestamps = nan(size(names));
     for i = 1:numel(names)
         d = dir(fullfile(sensitivityRoot, names{i}));
@@ -343,18 +341,18 @@ function batchDir = resolve_batch_dir(sensitivityRoot, batchName, scenarios, out
 
     for i = 1:numel(order)
         candDir = fullfile(sensitivityRoot, names{order(i)});
-        if batch_has_scenario_csvs(candDir, scenarios, outputSubdir, caseCsvSubdirs)
+        if batch_has_scenario_results(candDir, scenarios, outputSubdir, structResultsPattern)
             batchDir = candDir;
             return
         end
     end
 
-    error('PlotSensitivityScenarioResults:NoBatchWithScenarioCSVs', ...
-        ['No sensitivity batch with scenario CSV files was found under %s.\n' ...
-         'Check whether sensitivity runs created per-case CSV outputs.'], sensitivityRoot);
+    error('PlotSensitivityScenarioResults:NoBatchWithScenarioResults', ...
+        ['No sensitivity batch with structScenarioResults*.mat files was found under %s.\n' ...
+         'Check whether sensitivity runs copied MAT outputs into each case folder.'], sensitivityRoot);
 end
 
-function caseFolders = list_case_folders(batchDir, outputSubdir, caseCsvSubdirs, scenarios)
+function caseFolders = list_case_folders(batchDir, outputSubdir, structResultsPattern, scenarios)
     listing = dir(batchDir);
     isDir = [listing.isdir];
     names = {listing(isDir).name};
@@ -363,7 +361,7 @@ function caseFolders = list_case_folders(batchDir, outputSubdir, caseCsvSubdirs,
 
     hasScenarioData = false(size(names));
     for i = 1:numel(names)
-        hasScenarioData(i) = case_has_any_scenario(fullfile(batchDir, names{i}), scenarios, caseCsvSubdirs);
+        hasScenarioData(i) = case_has_any_scenario(fullfile(batchDir, names{i}), scenarios, structResultsPattern);
     end
     names = names(hasScenarioData);
 
@@ -380,24 +378,46 @@ function caseFolders = list_case_folders(batchDir, outputSubdir, caseCsvSubdirs,
     caseFolders = [names(isNumbered), names(~isNumbered)];
 end
 
-function entries = load_scenario_tables(batchDir, caseFolders, scenarioName, caseCsvSubdirs, yearRange)
-    entries = struct('caseLabel', {}, 'data', {});
+function caseData = load_case_data(batchDir, caseFolders, scenarios, structResultsPattern, startYear, maxPeriods, yearRange)
+    caseData = struct('caseLabel', {}, 'scenarioTables', {});
     for i = 1:numel(caseFolders)
         caseName = caseFolders{i};
-        csvPath = resolve_scenario_csv_path(fullfile(batchDir, caseName), scenarioName, caseCsvSubdirs);
-        if isempty(csvPath)
+        caseDir = fullfile(batchDir, caseName);
+        matPath = resolve_struct_results_path(caseDir, structResultsPattern);
+        if isempty(matPath)
             continue
         end
-        tab = read_table_preserve_names(csvPath);
-        if ~ismember('Year', tab.Properties.VariableNames)
+
+        caseResults = load_case_results(matPath);
+        scenarioTables = struct();
+        hasScenarioData = false;
+        for iScen = 1:numel(scenarios)
+            scenarioName = scenarios{iScen};
+            tab = build_scenario_table(caseResults, scenarioName, startYear, maxPeriods, yearRange);
+            if isempty(tab)
+                continue
+            end
+            scenarioTables.(scenarioName) = tab;
+            hasScenarioData = true;
+        end
+
+        if ~hasScenarioData
             continue
         end
-        tab = restrict_to_year_range(tab, yearRange);
-        if isempty(tab)
+
+        caseData(end + 1).caseLabel = caseName; %#ok<AGROW>
+        caseData(end).scenarioTables = scenarioTables;
+    end
+end
+
+function entries = load_scenario_tables(caseData, scenarioName)
+    entries = struct('caseLabel', {}, 'data', {});
+    for i = 1:numel(caseData)
+        if ~isfield(caseData(i).scenarioTables, scenarioName)
             continue
         end
-        entries(end + 1).caseLabel = caseName; %#ok<AGROW>
-        entries(end).data = tab;
+        entries(end + 1).caseLabel = caseData(i).caseLabel; %#ok<AGROW>
+        entries(end).data = caseData(i).scenarioTables.(scenarioName);
     end
 end
 
@@ -474,18 +494,6 @@ function c = pick_color(i)
     c = palette(mod(i - 1, size(palette, 1)) + 1, :);
 end
 
-function tab = read_table_preserve_names(filePath)
-    try
-        tab = readtable(filePath, 'PreserveVariableNames', true);
-    catch
-        try
-            tab = readtable(filePath, 'VariableNamingRule', 'preserve');
-        catch
-            tab = readtable(filePath);
-        end
-    end
-end
-
 function ensure_dir(pathStr)
     if ~exist(pathStr, 'dir')
         mkdir(pathStr);
@@ -497,54 +505,100 @@ function out = sanitize_name(textIn)
     out = regexprep(out, '_+', '_');
 end
 
-function tf = batch_has_scenario_csvs(batchDir, scenarios, outputSubdir, caseCsvSubdirs)
-    caseFolders = list_case_folders(batchDir, outputSubdir, caseCsvSubdirs, scenarios);
+function tf = batch_has_scenario_results(batchDir, scenarios, outputSubdir, structResultsPattern)
+    caseFolders = list_case_folders(batchDir, outputSubdir, structResultsPattern, scenarios);
     tf = ~isempty(caseFolders);
 end
 
-function tf = case_has_any_scenario(caseDir, scenarios, caseCsvSubdirs)
+function tf = case_has_any_scenario(caseDir, scenarios, structResultsPattern)
     tf = false;
+    matPath = resolve_struct_results_path(caseDir, structResultsPattern);
+    if isempty(matPath)
+        return
+    end
+
+    caseResults = load_case_results(matPath);
     for i = 1:numel(scenarios)
-        if ~isempty(resolve_scenario_csv_path(caseDir, scenarios{i}, caseCsvSubdirs))
+        if isfield(caseResults, scenarios{i})
             tf = true;
             return
         end
     end
 end
 
-function csvPath = resolve_scenario_csv_path(caseDir, scenarioName, caseCsvSubdirs)
-    csvPath = '';
-    for i = 1:numel(caseCsvSubdirs)
-        subdir = caseCsvSubdirs{i};
-        if isempty(subdir)
-            cand = fullfile(caseDir, [scenarioName '.csv']);
-        else
-            cand = fullfile(caseDir, subdir, [scenarioName '.csv']);
-        end
-        if isfile(cand)
-            csvPath = cand;
-            return
-        end
+function matPath = resolve_struct_results_path(caseDir, structResultsPattern)
+    matPath = '';
+    listing = dir(fullfile(caseDir, structResultsPattern));
+    if isempty(listing)
+        return
     end
+    [~, order] = sort([listing.datenum], 'descend');
+    matPath = fullfile(caseDir, listing(order(1)).name);
 end
 
-function impactTable = build_top_impact_table(batchDir, caseFolders, comparisonPair, varName, caseCsvSubdirs)
+function caseResults = load_case_results(matPath)
+    data = load(matPath, 'structScenarioResults');
+    if ~isfield(data, 'structScenarioResults') || isempty(data.structScenarioResults)
+        caseResults = struct();
+        return
+    end
+
+    versionNames = fieldnames(data.structScenarioResults);
+    if isempty(versionNames)
+        caseResults = struct();
+        return
+    end
+
+    caseResults = data.structScenarioResults.(versionNames{1});
+end
+
+function tab = build_scenario_table(caseResults, scenarioName, startYear, maxPeriods, yearRange)
+    tab = table();
+    if ~isfield(caseResults, scenarioName)
+        return
+    end
+
+    scenarioData = caseResults.(scenarioName);
+    if ~isfield(scenarioData, 'oo_') || ~isfield(scenarioData, 'M_') || ...
+            ~isfield(scenarioData.oo_, 'endo_simul') || ~isfield(scenarioData.M_, 'endo_names')
+        return
+    end
+
+    endoSimul = scenarioData.oo_.endo_simul;
+    if ~isnumeric(endoSimul) || isempty(endoSimul)
+        return
+    end
+
+    periodCount = size(endoSimul, 2);
+    if ~isempty(maxPeriods)
+        periodCount = min(periodCount, maxPeriods);
+    end
+    if periodCount < 1
+        return
+    end
+
+    years = startYear + (0:(periodCount - 1))';
+    tab = array2table([years, endoSimul(:, 1:periodCount)']);
+    varNames = cellstr(scenarioData.M_.endo_names);
+    tab.Properties.VariableNames = [{'Year'}, reshape(varNames, 1, [])];
+    tab = restrict_to_year_range(tab, yearRange);
+end
+
+function impactTable = build_top_impact_table(batchDir, caseData, comparisonPair, varName)
     scenarioA = comparisonPair{1};
     scenarioB = comparisonPair{2};
 
     rows = table();
-    for i = 1:numel(caseFolders)
-        caseName = caseFolders{i};
+    for i = 1:numel(caseData)
+        caseName = caseData(i).caseLabel;
         caseDir = fullfile(batchDir, caseName);
 
-        csvA = resolve_scenario_csv_path(caseDir, scenarioA, caseCsvSubdirs);
-        csvB = resolve_scenario_csv_path(caseDir, scenarioB, caseCsvSubdirs);
-        if isempty(csvA) || isempty(csvB)
+        if ~isfield(caseData(i).scenarioTables, scenarioA) || ~isfield(caseData(i).scenarioTables, scenarioB)
             continue
         end
 
-        tabA = read_table_preserve_names(csvA);
-        tabB = read_table_preserve_names(csvB);
+        tabA = caseData(i).scenarioTables.(scenarioA);
+        tabB = caseData(i).scenarioTables.(scenarioB);
         if ~ismember(varName, tabA.Properties.VariableNames) || ~ismember(varName, tabB.Properties.VariableNames)
             continue
         end
